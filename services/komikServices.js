@@ -32,7 +32,10 @@ async function getKomikById(database, id) {
     const komik = await database.Komik.findByPk(id);
     if (!komik) throw new Error('Komik tidak ditemukan');
 
-    if komik(imageData)
+    if (komik.imageData){
+        komik.imageData = komik.imageData.toString('base64');
+    }
+}
 
 async function updateKomik(database, id, komikData) {
     const komik = await database.Komik.findByPk(id);
